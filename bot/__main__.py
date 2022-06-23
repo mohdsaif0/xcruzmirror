@@ -44,41 +44,42 @@ def stats(update, context):
     mem_t = get_readable_file_size(memory.total)
     mem_a = get_readable_file_size(memory.available)
     mem_u = get_readable_file_size(memory.used)
-    stats = f'<b>Commit Date:</b> {last_commit}\n\n'\
-            f'<b>Bot Uptime:</b> {currentTime}\n'\
-            f'<b>OS Uptime:</b> {osUptime}\n\n'\
-            f'<b>Total Disk Space:</b> {total}\n'\
-            f'<b>Used:</b> {used} | <b>Free:</b> {free}\n\n'\
-            f'<b>Upload:</b> {sent}\n'\
-            f'<b>Download:</b> {recv}\n\n'\
-            f'<b>CPU:</b> {cpuUsage}%\n'\
-            f'<b>RAM:</b> {mem_p}%\n'\
-            f'<b>DISK:</b> {disk}%\n\n'\
-            f'<b>Physical Cores:</b> {p_core}\n'\
-            f'<b>Total Cores:</b> {t_core}\n\n'\
-            f'<b>SWAP:</b> {swap_t} | <b>Used:</b> {swap_p}%\n'\
-            f'<b>Memory Total:</b> {mem_t}\n'\
-            f'<b>Memory Free:</b> {mem_a}\n'\
-            f'<b>Memory Used:</b> {mem_u}\n'
+    stats = f'<b>╭─ Commit Date ⟶ </b> {last_commit}\n'\
+            f'<b>├⌬ Bot Uptime:</b> {currentTime}\n'\
+            f'<b>├⌬ OS Uptime:</b> {osUptime}\n'\
+            f'<b>├⌬ Total Disk Space:</b> {total}\n'\
+            f'<b>├⌬ Used:</b> {used} | <b>Free:</b> {free}\n'\
+            f'<b>├⌬ Upload:</b> {sent}\n'\
+            f'<b>├⌬ Download:</b> {recv}\n'\
+            f'<b>├⌬ CPU:</b> {cpuUsage}%\n'\
+            f'<b>├⌬ RAM:</b> {mem_p}%\n'\
+            f'<b>├⌬ DISK:</b> {disk}%\n'\
+            f'<b>├⌬ Physical Cores:</b> {p_core}\n'\
+            f'<b>├⌬ Total Cores:</b> {t_core}\n'\
+            f'<b>├⌬ SWAP:</b> {swap_t} | <b>Used:</b> {swap_p}%\n'\
+            f'<b>├⌬ Memory Total:</b> {mem_t}\n'\
+            f'<b>├⌬ Memory Free:</b> {mem_a}\n'\
+            f'<b>╰─Memory Used:</b> {mem_u}\n'
     sendMessage(stats, context.bot, update.message)
 
 
 def start(update, context):
     buttons = ButtonMaker()
-    buttons.buildbutton("Repo", "https://github.com/arshsisodiya/helios-mirror")
-    buttons.buildbutton("Support Group", "https://t.me/mirrorsociety")
+    buttons.buildbutton("Mʏ Mᴀsᴛᴇʀ", "https://t.me/Mahith1211")
+    buttons.buildbutton("Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ", "https://t.me/ASIMIRRORUPDATESS")
+    buttons.buildbutton("Jᴏɪɴ ᴏᴜʀ ᴀɴɪᴍᴇ ᴄʜᴀɴɴᴇʟ", "https://t.me/PokemonJourneysEngDubsub")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         start_string = f'''
-This bot can mirror all your links to Google Drive!
-Type /{BotCommands.HelpCommand} to get a list of available commands
+\nHey. Nice to meet you ! I'm ASI MIRROR BOT, an AIO Bot which can Mirror Torrents, Direct links, YTDL links & Mega.nz Links to the Google Drive & Leech Them To TG along with some cool addons as well.\n
+\nDo you know How to use me? Type /{BotCommands.HelpCommand} to get available commands.\n \nNote : Must Join updates channel to USE ME.\n
 '''
         sendMarkup(start_string, context.bot, update.message, reply_markup)
     else:
-        sendMarkup('Not Authorized user, deploy your own mirror-leech bot', context.bot, update.message, reply_markup)
+        sendMarkup('I just Checked my Database, It seems you are not a Authorized User. Join My Updates Channel @ASIMIRRORUPDATESS to use me or ask my Master @Mahith1211 to authorize you.', context.bot, update.message, reply_markup)
 
 def restart(update, context):
-    restart_message = sendMessage("Restarting...", context.bot, update.message)
+    restart_message = sendMessage("Restarting!... Just a moment....", context.bot, update.message)
     if Interval:
         Interval[0].cancel()
     alive.kill()
@@ -170,43 +171,32 @@ help_string_telegraph = f'''<br>
 <b>/{BotCommands.StatsCommand}</b>: Show Stats of the machine the bot is hosted on
 '''
 
-
-sudo_help_string = f'''<br><br><b> Sudo/Owner Only Commands </b><br><br>
-<b>/{BotCommands.PingCommand}</b>: Check how long it takes to Ping the Bot
-<br><br>
-<b>/{BotCommands.AuthorizeCommand}</b>: Authorize a chat or a user to use the bot (Can only be invoked by Owner & Sudo of the bot)
-<br><br>
-<b>/{BotCommands.UnAuthorizeCommand}</b>: Unauthorize a chat or a user to use the bot (Can only be invoked by Owner & Sudo of the bot)
-<br><br>
-<b>/{BotCommands.AuthorizedUsersCommand}</b>: Show authorized users (Only Owner & Sudo)
-<br><br>
-<b>/{BotCommands.AddSudoCommand}</b>: Add sudo user (Only Owner)
-<br><br>
-<b>/{BotCommands.RmSudoCommand}</b>: Remove sudo users (Only Owner)
-<br><br>
-<b>/{BotCommands.RestartCommand}</b>: Restart and update the bot
-<br><br>
-<b>/{BotCommands.LogCommand}</b>: Get a log file of the bot. Handy for getting crash reports
-<br><br>
-<b>/{BotCommands.ShellCommand}</b>: Run commands in Shell (Only Owner)
-<br><br>
-<b>/{BotCommands.ExecHelpCommand}</b>: Get help for Executor module (Only Owner)
-<br><br>
-<b>/{BotCommands.AddleechlogCommand}</b>: Add Leech Log
-<br><br>
-<b>/{BotCommands.RmleechlogCommand}</b>: Remove Leech Log
-'''
-help_string = f'''
-Hei, Need Help!!
-'''
 help = telegraph.create_page(
-        title='Helios-Mirror Help',
-        content=help_string_telegraph + sudo_help_string,
+        title='ASI Mirror-Bot Help',
+        content=help_string_telegraph,
     )["path"]
+
+help_string = f'''
+/{BotCommands.PingCommand}: Check how long it takes to Ping the Bot
+
+/{BotCommands.AuthorizeCommand}: Authorize a chat or a user to use the bot (Can only be invoked by Owner & Sudo of the bot)
+
+/{BotCommands.UnAuthorizeCommand}: Unauthorize a chat or a user to use the bot (Can only be invoked by Owner & Sudo of the bot)
+
+/{BotCommands.AuthorizedUsersCommand}: Show authorized users (Only Owner & Sudo)
+
+/{BotCommands.AddSudoCommand}: Add sudo user (Only Owner)
+
+/{BotCommands.RmSudoCommand}: Remove sudo users (Only Owner)
+
+/{BotCommands.RestartCommand}: Restart and update the bot
+
+/{BotCommands.LogCommand}: Get a log file of the bot. Handy for getting crash reports
+'''
 
 def bot_help(update, context):
     button = ButtonMaker()
-    button.buildbutton("Click Here", f"https://telegra.ph/{help}")
+    button.buildbutton("Need Other Commands?", f"https://telegra.ph/{help}")
     reply_markup = InlineKeyboardMarkup(button.build_menu(1))
     sendMarkup(help_string, context.bot, update.message, reply_markup)
 
@@ -231,18 +221,24 @@ def main():
                                  bot.editMessageText(msg, chat_id, msg_id, parse_mode='HTMl', disable_web_page_preview=True)
                                  osremove(".restartmsg")
                              else:
-                                 bot.sendMessage(cid, msg, 'HTML')
+                                 try:
+                                     bot.sendMessage(cid, msg, 'HTML')
+                                 except Exception as e:
+                                     LOGGER.error(e)
                              msg = ''
                 if 'Restarted successfully!' in msg and cid == chat_id:
                      bot.editMessageText(msg, chat_id, msg_id, parse_mode='HTMl', disable_web_page_preview=True)
                      osremove(".restartmsg")
                 else:
-                    bot.sendMessage(cid, msg, 'HTML')
+                    try:
+                        bot.sendMessage(cid, msg, 'HTML')
+                    except Exception as e:
+                        LOGGER.error(e)
 
     if ospath.isfile(".restartmsg"):
         with open(".restartmsg") as f:
             chat_id, msg_id = map(int, f)
-        bot.edit_message_text("Restarted successfully!", chat_id, msg_id)
+        bot.edit_message_text("Mirror Bot Successfully Restarted!\n\nPlease start your downloads again\n\nCourtesy of ASI MIRROR\n\n#Rebooted", chat_id, msg_id)
         osremove(".restartmsg")
 
     start_handler = CommandHandler(BotCommands.StartCommand, start, run_async=True)
@@ -265,7 +261,7 @@ def main():
     LOGGER.info("Bot Started!")
     signal(SIGINT, exit_clean_up)
 
-main()
 app.start()
+main()
 
 main_loop.run_forever()
