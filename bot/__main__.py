@@ -65,13 +65,11 @@ def stats(update, context):
 
 def start(update, context):
     buttons = ButtonMaker()
-    buttons.buildbutton("Mʏ Mᴀsᴛᴇʀ", "https://t.me/Mahith1211")
-    buttons.buildbutton("Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ", "https://t.me/ASIMIRRORUPDATESS")
-    buttons.buildbutton("Jᴏɪɴ ᴏᴜʀ ᴀɴɪᴍᴇ ᴄʜᴀɴɴᴇʟ", "https://t.me/PokemonJourneysEngDubsub")
+    buttons.buildbutton("Mʏ Mᴀsᴛᴇʀ", "https://t.me/Terminator090")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         start_string = f'''
-\nHey. Nice to meet you ! I'm ASI MIRROR BOT, an AIO Bot which can Mirror Torrents, Direct links, YTDL links & Mega.nz Links to the Google Drive & Leech Them To TG along with some cool addons as well.\n
+\nHey. Nice to meet you ! I'm TERMINATOR, an AIO Bot which can Mirror Torrents, Direct links, YTDL links & Mega.nz Links to the Google Drive & Leech Them To TG along with some cool addons as well.\n
 \nDo you know How to use me? Type /{BotCommands.HelpCommand} to get available commands.\n \nNote : Must Join updates channel to USE ME.\n
 '''
         sendMarkup(start_string, context.bot, update.message, reply_markup)
@@ -172,7 +170,7 @@ help_string_telegraph = f'''<br>
 '''
 
 help = telegraph.create_page(
-        title='ASI Mirror-Bot Help',
+        title='XCRUZZ Mirror-Bot Help',
         content=help_string_telegraph,
     )["path"]
 
@@ -238,7 +236,7 @@ def main():
     if ospath.isfile(".restartmsg"):
         with open(".restartmsg") as f:
             chat_id, msg_id = map(int, f)
-        bot.edit_message_text("Mirror Bot Successfully Restarted!\n\nPlease start your downloads again\n\nCourtesy of ASI MIRROR\n\n#Rebooted", chat_id, msg_id)
+        bot.edit_message_text("Mirror Bot Successfully Restarted!\n\nPlease start your downloads again\n\nCourtesy of XCRUZZ MIRROR\n\n#Rebooted", chat_id, msg_id)
         osremove(".restartmsg")
 
     start_handler = CommandHandler(BotCommands.StartCommand, start, run_async=True)
