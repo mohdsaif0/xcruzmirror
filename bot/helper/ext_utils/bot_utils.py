@@ -136,7 +136,7 @@ def get_readable_message():
         for index, download in enumerate(list(download_dict.values())[COUNT:], start=1):
             
             msg += "\nMirroring Under Process! Please Wait...\n"
-            msg += "\n「𝗔𝗦𝗜 𝗠𝗜𝗥𝗥𝗢𝗥 𝗕𝗢𝗧𝗦」\n\n"
+            msg += "\n「XCRUZZ MIRROR BOTS」\n\n"
             msg += f"<b>╭─Fɪʟᴇ Nᴀᴍᴇ:</b> <code>{escape(str(download.name()))}</code>"
             msg += f"\n<b>├⌬Sᴛᴀᴛᴜs:</b> <i>{download.status()}</i>"
             
@@ -366,7 +366,7 @@ TOTAL: {total}
 USED: {used} | FREE: {free}
 \nSENT: {sent} | RECV: {recv}\n
 
-BY : 𝑀𝒜𝐻𝐼𝒯𝐻 [𝘼𝙎𝙄 𝙈𝙞𝙧𝙧𝙤𝙧 𝘽𝙤𝙩]
+BY : TERMINATOR [XCRUZZ MIRROR BOTS]
 """
 
     return stats
